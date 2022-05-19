@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-explicit-exports-references",
+  "name": "@playvs-inc/babel-plugin-explicit-function-export-references",
   "version": "1.0.2",
   "description": "Transforms all internal references to a module's exports such that each reference starts with `module.exports` instead of directly referencing an internal name. This enables easy mocking of specific (exported) functions in Jest with Babel/TypeScript, even when the mocked functions call each other in the same module.",
   "keywords": [
@@ -21,8 +21,10 @@
     "typescript"
   ],
   "repository": {
-    "type": "git",
-    "url": "https://github.com/Xunnamius/babel-plugin-explicit-exports-references"
+    "url": "git@github.com:playvs-inc/babel-plugin-explicit-function-export-references.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "author": "Xunnamius",
@@ -95,8 +97,5 @@
   },
   "engines": {
     "node": ">= 12.x"
-  },
-  "publishConfig": {
-    "access": "public"
   }
 }

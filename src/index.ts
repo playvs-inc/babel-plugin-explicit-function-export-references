@@ -125,24 +125,6 @@ export default function (): PluginObj<
               'named',
               transformAssignExpr
             );
-          } else if (declaration.isVariableDeclaration()) {
-            declaration.get('declarations').forEach((declarator) => {
-              const id = declarator.get('id');
-              if (id.isIdentifier()) updateExportRefs(id, 'named', transformAssignExpr);
-              else if (id.isObjectPattern()) {
-                id.get('properties').forEach((propPath) => {
-                  if (propPath.isObjectProperty()) {
-                    const propId = propPath.get('value');
-                    if (propId.isIdentifier())
-                      updateExportRefs(propId, 'named', transformAssignExpr);
-                  } else if (propPath.isRestElement()) {
-                    const arg = propPath.get('argument');
-                    if (arg.isIdentifier())
-                      updateExportRefs(arg, 'named', transformAssignExpr);
-                  }
-                });
-              }
-            });
           } else {
             dbg(
               'named declaration is not a function, class, or variable declaration; ignored'
